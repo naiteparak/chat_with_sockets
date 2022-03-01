@@ -4,7 +4,6 @@ const express = require("express");
 const sockertio = require("socket.io");
 const formatMessage = require("./public/utils/messages")
 const {userJoin, getCurrentUser, userLeav, getRoomUsers} = require("./public/utils/users");
-const { is } = require("express/lib/request");
 
 const app = express();
 const server = http.createServer(app)

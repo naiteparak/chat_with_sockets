@@ -20,9 +20,8 @@ socket.on("usersRoom", ({room, users}) => {
 socket.on("message", message =>{
  
     outputMessage(message);
-    console.log(message);
+
     //Scroll
-    console.log(chatMessages);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 })
 
@@ -53,6 +52,7 @@ function outputMessage(message){
     <p class="text">
         ${message.text}
     </p>`
+    typingBox.innerHTML = ""
     document.querySelector(".chat-messages").appendChild(div)
     
 }
@@ -71,5 +71,5 @@ function typing(user){
     typingBox.innerHTML = `<p><b>${user}</b> is typing...</p>`
     setTimeout(() => {
         typingBox.innerHTML = ""
-    }, 3000);
+    }, 6000);
 }
