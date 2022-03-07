@@ -3,10 +3,10 @@ const http = require("http")
 const express = require("express");
 const socketio = require("socket.io");
 const formatMessage = require("./public/utils/messages")
+const imageMessage = require("./public/utils/imageMessage")
 const {userJoin, getCurrentUser, userLeav, getRoomUsers} = require("./public/utils/users");
 const fs = require('fs')
-const { v4: uuidv4 } = require('uuid');
-
+const { v4: uuid } = require('uuid');
 
 const app = express();
 const server = http.createServer(app)
@@ -47,12 +47,12 @@ io.on("connection", socket=>{
             .emit("typing", name)
     })
 
-    socket.on("imgUpload", (e)=>{
-        const imgName = uuidv4()
-        const buffer = e
+    socket.on("imgUpload", (img)=>{
+        const imgName = uuid()
+        const buffer = img
         const user = getCurrentUser(socket.id)
         fs.writeFileSync("./public/images/" + imgName + ".jpg", buffer);
-        io.to(user.room).emit("upload", imgName)
+        io.to(user.room).emit("upload", imageMessage(user.username, imgName) )
     })
 
     socket.on("disconnect", ()=>{
@@ -63,7 +63,23 @@ io.on("connection", socket=>{
     });    
 })
 
+//Cron for deletig images
 
+fs.readdir("public/images", (err, files) => {
+    if (err) {
+      console.error("Could not list the directory.", err);
+      process.exit(1);
+    }
+    if(files.length >= 5){
+        files.forEach((file )=>{
+            fs.unlink(`public/images/${file}`, (err) =>{
+                if (err) console.log(err);
+                // if no error, file has been deleted successfully
+                console.log('File deleted!')
+            })
+        })
+    }
+})
 
 const PORT = 80 || process.env.PORT;
 

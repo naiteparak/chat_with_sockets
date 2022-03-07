@@ -5,7 +5,6 @@ const userList = document.getElementById("users")
 const typingBox = document.getElementById("typingBox")
 const uploadImg = document.getElementById("upload")
 
-
 const {username, room} = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 })
@@ -29,7 +28,7 @@ socket.on("message", message =>{
 socket.on("upload", (image)=>{
     upload(image)
 
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    chatMessages.scrollTo(0, chatMessages.scrollHeight)
 })
 
 
@@ -51,7 +50,9 @@ chatForm.addEventListener("submit", (e)=>{
 
 uploadImg.addEventListener("submit", (e)=>{
     e.preventDefault()
-    socket.emit("imgUpload", e.target.elements.image.files[0]);     
+    socket.emit("imgUpload", e.target.elements.image.files[0]);    
+    
+    //Clear file name in input 
     e.target.elements.image.value = ""
 })
 
@@ -91,6 +92,8 @@ function typing(user){
 function upload(url){
     const div = document.createElement('div');
     div.classList.add("upload")
-    div.innerHTML = `<img src="../images/${url}.jpg" width ="450 px" />`
+    div.innerHTML = `<p class="text">${url.username}<span> ${url.time} </span></p>
+    <img src="../images/${url.image}.jpg" width ="450 px, height="auto" />
+    `
     document.querySelector(".chat-messages").appendChild(div)
 }
