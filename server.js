@@ -63,6 +63,14 @@ io.on("connection", socket=>{
     });    
 })
 
+const imageFile = fs.existsSync("./public/images")
+if(!imageFile){
+    fs.mkdir("./public/images",  (err)=>{
+        if(err) console.log(err);
+    })
+}
+
+
 //Cron for deletig images
 
 fs.readdir("public/images", (err, files) => {
