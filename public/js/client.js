@@ -18,7 +18,7 @@ socket.on("usersRoom", ({room, users}) => {
     outputUsers(users)
 })
 
-socket.on("message", message =>{
+socket.on("message", (message) =>{
     outputMessage(message);
 
     //Scroll

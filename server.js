@@ -75,9 +75,9 @@ fs.readdir("public/images", (err, files) => {
             fs.unlink(`public/images/${file}`, (err) =>{
                 if (err) console.log(err);
                 // if no error, file has been deleted successfully
-                console.log('File deleted!')
             })
         })
+        console.log('Images deleted!')
     }
 })
 
