@@ -1,15 +1,19 @@
 const path = require("path");
 const http = require("http")
 const express = require("express");
-const sockertio = require("socket.io");
+const socketio = require("socket.io");
 const formatMessage = require("./public/utils/messages")
 const {userJoin, getCurrentUser, userLeav, getRoomUsers} = require("./public/utils/users");
+const fs = require('fs')
+const { v4: uuidv4 } = require('uuid');
+
 
 const app = express();
 const server = http.createServer(app)
-const io = sockertio(server)
+const io = socketio(server)
 
 app.use(express.static(path.join(__dirname, "public")))
+
 const admin = "Admin"
 
 io.on("connection", socket=>{
@@ -28,9 +32,7 @@ io.on("connection", socket=>{
         io.to(user.room).emit("usersRoom", {
             room: user.room,
             users: getRoomUsers(user.room)
-        })
-
-        
+        })  
     })
 
     socket.on("chatMessage", (msg)=>{
@@ -45,13 +47,23 @@ io.on("connection", socket=>{
             .emit("typing", name)
     })
 
+    socket.on("imgUpload", (e)=>{
+        const imgName = uuidv4()
+        const buffer = e
+        const user = getCurrentUser(socket.id)
+        fs.writeFileSync("./public/images/" + imgName + ".jpg", buffer);
+        io.to(user.room).emit("upload", imgName)
+    })
+
     socket.on("disconnect", ()=>{
         const user = userLeav(socket.id)
         if (user){
             io.to(user.room).emit("message", formatMessage(admin, `${user.username} has left the chat`))
         }
-    });
+    });    
 })
+
+
 
 const PORT = 80 || process.env.PORT;
 

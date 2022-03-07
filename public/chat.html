@@ -27,7 +27,7 @@
       </div>
     </main>
     <div class="chat-form-container">
-      <form id="chat-form">
+      <form id="chat-form" >
         <input
           id="msg"
           type="text"
@@ -37,11 +37,21 @@
         />
         <button class="btn"><i class="fas fxa-paper-plane"></i> Send</button>
       </form>
+      <form id="upload">
+        <input
+          id="image"
+          type="file"
+          accept=".jpg, .jpeg, .png"
+          required
+        />
+        <button class="btn"><i class="fas fxa-paper-plane"></i> Upload</button>
+      </form>
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js" integrity="sha512-juaCj8zi594KHQqb92foyp87mCSriYjw3BcTHaXsAn4pEB1YWh+z+XQScMxIxzsjfM4BeVFV3Ij113lIjWiC2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/socket.io/socket.io.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/client.js"></script>
+
 </body>
 </html>
