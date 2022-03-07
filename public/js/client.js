@@ -41,7 +41,13 @@ chatForm.addEventListener("submit", (e)=>{
     //Get message 
     const msg = e.target.elements.msg.value
 
-    socket.emit("chatMessage", msg); 
+    if(msg.trim() === ""){
+        console.log("g");
+        e.target.elements.msg.value = "";
+        e.target.elements.msg.focus();
+    } else { 
+        socket.emit("chatMessage", msg)
+    } 
 
     //Clear input 
     e.target.elements.msg.value = "";
@@ -86,7 +92,7 @@ function typing(user){
     typingBox.innerHTML = `<p><b>${user}</b> is typing...</p>`
     setTimeout(() => {
         typingBox.innerHTML = ""
-    }, 6000);
+    }, 5000);
 }
 
 function upload(url){
