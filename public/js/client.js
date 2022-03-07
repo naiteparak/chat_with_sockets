@@ -5,6 +5,8 @@ const userList = document.getElementById("users")
 const typingBox = document.getElementById("typingBox")
 const uploadImg = document.getElementById("upload")
 
+
+
 const {username, room} = Qs.parse(location.search, {
     ignoreQueryPrefix: true
 })
