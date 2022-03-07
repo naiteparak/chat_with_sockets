@@ -63,7 +63,10 @@ io.on("connection", socket=>{
     });    
 })
 
+//If image folder does not exist, folder will be created 
+
 const imageFile = fs.existsSync("./public/images")
+
 if(!imageFile){
     fs.mkdir("./public/images",  (err)=>{
         if(err) console.log(err);
