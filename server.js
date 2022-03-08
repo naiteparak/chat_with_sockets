@@ -71,6 +71,7 @@ if(!imageFile){
     fs.mkdir("./public/images",  (err)=>{
         if(err) console.log(err);
     })
+    console.log("Image folder has been created")
 }
 
 
