@@ -36,6 +36,9 @@ a {
 	color: var(--dark-color-a);
 	border: 0;
 	font-size: 17px;
+	border-color: black;
+	border-width: 0.5px;
+	border-style: groove;
 }
 
 /* Chat Page */
