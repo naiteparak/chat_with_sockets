@@ -184,6 +184,10 @@ a {
 	position: absolute;
 	bottom: 0;
 }
+.footer_send_btn{
+	display: flex;
+	justify-content: space-between;
+}
 
 @media (max-width: 700px) {
 	.chat-main {

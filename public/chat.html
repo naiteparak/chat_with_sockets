@@ -37,24 +37,28 @@
         />
         <button class="btn"><i class="fas fxa-paper-plane"></i>Send</button>
       </form>
-      <form id="voiceMessage">
-        <div id="controls">
-          <button id="recordButton" class="btn">Voice message</button>
-          <button id="transcribeButton" name="otputAudio" class="btn" disabled required><img src="http://cdn.onlinewebfonts.com/svg/img_119878.png" width="15px"></button>
-        </div>
-        <div id="audioOutput"> </div>
-      </form>
-      <form id="upload">
-        <input
-          class="btn"
-          id="image"
-          type="file"
-          accept=".jpg, .jpeg, .png"
-          required
-        />
-         
-        <button class="btn"> | <img src="http://cdn.onlinewebfonts.com/svg/img_119878.png" width="15px"></button>
-      </form>
+      <div class="footer_send_btn">
+        <form id="voiceMessage" style="display:inline-block;">
+          <div id="controls">
+            <button id="recordButton" class="btn" >Voice message</button>
+            <button id="transcribeButton" name="otputAudio" class="btn" disabled required><img src="http://cdn.onlinewebfonts.com/svg/img_119878.png" width="15px"></button>
+          </div>
+          <div id="audioOutput"> </div>
+        </form>
+        <form id="upload" style="display:inline-block;">
+          <div>
+            <input
+              id="image"
+              type="file"
+              accept=".jpg, .jpeg, .png"
+              required
+              style="	background: var(--light-color); color: var(--dark-color-a); padding: 2px 15px; font-size: 17px;"
+            />
+            <button class="btn">  <img src="http://cdn.onlinewebfonts.com/svg/img_119878.png" width="15px"></button>
+          </div>
+        </form>
+      </div>
+    
     </div>
   </div>
 
