@@ -32,11 +32,13 @@ socket.on("message", (message) =>{
 socket.on("upload", (image)=>{
     upload(image)
 
-    chatMessages.scrollTo(0, chatMessages.scrollHeight)
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 })
 
 socket.on("audio", audio=>{
     uploadAudio(audio)
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 })
 
 

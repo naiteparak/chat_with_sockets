@@ -82,7 +82,6 @@ io.on("connection", socket=>{
               process.exit(1);
             }
             const user = getCurrentUser(socket.id)
-            console.log(files[files.length - 1] );
             const fileName = files[files.length - 1]
             io.to(user.room).emit("audio", audioMessage(user.username, fileName))
         })
