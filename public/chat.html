@@ -35,16 +35,25 @@
           required
           autocomplete="off"
         />
-        <button class="btn"><i class="fas fxa-paper-plane"></i> Send</button>
+        <button class="btn"><i class="fas fxa-paper-plane"></i>Send</button>
+      </form>
+      <form id="voiceMessage">
+        <div id="controls">
+          <button id="recordButton" class="btn" >Record</button>
+          <button id="transcribeButton" name="otputAudio" class="btn" disabled required>Send</button>
+        </div>
+        <div id="audioOutput"> </div>
       </form>
       <form id="upload">
         <input
+          class="btn"
           id="image"
           type="file"
           accept=".jpg, .jpeg, .png"
           required
         />
-        <button class="btn"><i class="fas fxa-paper-plane"></i> Upload</button>
+         
+        <button class="btn"><i class="fas fxa-paper-plane">|</i> Upload</button>
       </form>
     </div>
   </div>
@@ -52,6 +61,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.10.3/qs.min.js" integrity="sha512-juaCj8zi594KHQqb92foyp87mCSriYjw3BcTHaXsAn4pEB1YWh+z+XQScMxIxzsjfM4BeVFV3Ij113lIjWiC2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/client.js"></script>
-
+  <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
 </body>
 </html>

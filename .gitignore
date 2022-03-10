@@ -2,3 +2,5 @@
 .idea
 .DS_Store
 /public/images
+.env
+/public/audio_files
